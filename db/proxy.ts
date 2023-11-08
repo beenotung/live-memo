@@ -60,6 +60,13 @@ export type RequestLog = {
   user?: User
 }
 
+export type Memo = {
+  id?: null | number
+  user_id: number
+  user?: User
+  content: string
+}
+
 export type DBProxy = {
   method: Method[]
   url: Url[]
@@ -69,6 +76,7 @@ export type DBProxy = {
   user_agent: UserAgent[]
   ua_stat: UaStat[]
   request_log: RequestLog[]
+  memo: Memo[]
 }
 
 export let proxy = proxySchema<DBProxy>({
@@ -90,6 +98,10 @@ export let proxy = proxySchema<DBProxy>({
       ['method', { field: 'method_id', table: 'method' }],
       ['url', { field: 'url_id', table: 'url' }],
       ['user_agent', { field: 'user_agent_id', table: 'user_agent' }],
+      ['user', { field: 'user_id', table: 'user' }],
+    ],
+    memo: [
+      /* foreign references */
       ['user', { field: 'user_id', table: 'user' }],
     ],
   },
