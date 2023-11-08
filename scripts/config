@@ -1,0 +1,4 @@
+user=node
+host=live-memo.cc
+root_dir=/home/node/workspace/github.com/beenotung/live-memo
+pm2_name="live-memo"
